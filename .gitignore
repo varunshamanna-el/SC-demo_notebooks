@@ -3,3 +3,4 @@
 *.nextflow*
 *.ipynb_checkpoints*
 *work*
+*.csv*
