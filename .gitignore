@@ -1,0 +1,5 @@
+*.h5ad*
+*.log
+*.nextflow*
+*.ipynb_checkpoints*
+*work*
