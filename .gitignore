@@ -7,3 +7,8 @@
 *RAW*
 *.gz*
 *tar*
+*.rds*
+*DS_Store*
+*.Rhistory*
+*.RData*
+*log*

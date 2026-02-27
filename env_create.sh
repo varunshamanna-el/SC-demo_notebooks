@@ -32,8 +32,8 @@ ENV_NAME="seurat_env"
 conda create --yes --name "$ENV_NAME"
 conda activate $ENV_NAME
 
-conda install -y -c conda-forge r-base
-conda install -y -c conda-forge gcc gxx pkg-config freetype fontconfig
+mamba install -y -c conda-forge r-base
+mamba install -y -c conda-forge gcc gxx pkg-config freetype fontconfig zlib
 
 mkdir -p ~/.R
 echo "CC=$CONDA_PREFIX/bin/gcc
@@ -46,26 +46,25 @@ LDFLAGS=-L\"$CONDA_PREFIX/lib\"" > ~/.R/Makevars
 R -e 'install.packages("IRkernel", repos = "https://cloud.r-project.org/")'
 R -e 'IRkernel::installspec(name="seurat_env", displayname = "seurat_env")'
 
-conda install -y -c conda-forge   r-igraph   r-leiden   r-rcpp   r-rcppannoy   r-uwot   r-reticulate
-conda install -y -c conda-forge   r-systemfonts   r-textshaping   r-ragg   r-xml2   r-rvest
+mamba install -y -c conda-forge   r-igraph   r-leiden   r-rcpp   r-rcppannoy   r-uwot   r-reticulate
+mamba install -y -c conda-forge   r-systemfonts   r-textshaping   r-ragg   r-xml2   r-rvest
+conda install -y -c conda-forge r-v8
 R -e 'install.packages("tidyverse", repos="https://cloud.r-project.org/")'
 #installing R packages needed for the analysis
 R -e 'install.packages("BiocManager", repos="https://cloud.r-project.org/")'
 R -e 'install.packages("Seurat", repos="https://cloud.r-project.org/")'
 R -e 'install.packages("SeuratObject", repos="https://cloud.r-project.org/")'
 #R -e 'install.packages("hdf5r", repos="https://cloud.r-project.org/")'
-conda install -y -c conda-forge r-hdf5r
+mamba install -y -c conda-forge r-hdf5r
 R -e 'install.packages("patchwork", repos="https://cloud.r-project.org/")'
 R -e 'install.packages("remotes", repos="https://cloud.r-project.org/")'
 R -e 'install.packages("RPresto", repos="https://cloud.r-project.org/")'
-R -e 'install.packages("tidyverse", repos="https://cloud.r-project.org/")'
 R -e 'install.packages("future", repos="https://cloud.r-project.org/")'
 R -e 'install.packages("future.apply", repos="https://cloud.r-project.org/")'
 R -e 'install.packages("cowplot", repos="https://cloud.r-project.org/")'
 R -e 'install.packages("data.table", repos="https://cloud.r-project.org/")'
+R -e 'install.packages("openxlsx", repos="https://cloud.r-project.org/")'
 R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")'
-
-# ---- GitHub ----
 R -e 'remotes::install_github("immunogenomics/presto")'
 
 # ---- Bioconductor ----
@@ -83,17 +82,17 @@ conda create --yes --name "$ENV_NAME_2" python=3.10
 conda activate "$ENV_NAME_2"
 
 
-conda install -y sos-notebook jupyterlab-sos sos-papermill -c conda-forge
+mamba install -y sos-notebook jupyterlab-sos sos-papermill -c conda-forge
 python -m sos_notebook.install
 
 pip install numpy scipy pandas matplotlib seaborn scikit-learn
 
 # ---- scanpy ecosystem ----
-conda install -y -c conda-forge   hdf5   h5py
+mamba install -y -c conda-forge   hdf5   h5py
 pip install scanpy anndata
 
 # ---- single-cell utilities ----
-conda install -y -c conda-forge   'python-igraph<=0.12'   leidenalg
+mamba install -y -c conda-forge   'python-igraph<=0.12'   leidenalg
 pip install harmonypy
 pip install scrublet
 pip install louvain
