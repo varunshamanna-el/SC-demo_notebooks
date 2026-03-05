@@ -12,3 +12,5 @@
 *.Rhistory*
 *.RData*
 *log*
+*env*
+*.env*
